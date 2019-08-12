@@ -15,11 +15,11 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
- * Application Lifecycle Listener implementation class LearnListener_20190812
+ * Application Lifecycle Listener implementation class LearnListener
  * Listener笔记
  */
 @WebListener
-public class LearnListener_20190812 implements 
+public class LearnListener implements 
 ServletContextListener, ServletContextAttributeListener,
 HttpSessionListener,HttpSessionAttributeListener,
 ServletRequestListener,ServletRequestAttributeListener{
@@ -86,7 +86,7 @@ ServletRequestListener,ServletRequestAttributeListener{
     /**
      * Default constructor. 
      */
-    public LearnListener_20190812() {
+    public LearnListener() {
         // TODO Auto-generated constructor stub
     }
 

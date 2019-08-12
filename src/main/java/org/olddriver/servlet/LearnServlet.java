@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LearnServlet_20190812
+ * Servlet implementation class LearnServlet
  * Servlet笔记
  */
 @WebServlet("/LearnServlet")
-public class LearnServlet_20190812 extends HttpServlet {
+public class LearnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	/*
@@ -220,7 +220,7 @@ public class LearnServlet_20190812 extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LearnServlet_20190812() {
+    public LearnServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
