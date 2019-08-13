@@ -21,7 +21,7 @@ public class LearnServlet extends HttpServlet {
 	 *jsp页面会被web服务器翻译成Servlet程序
 	 *servlet/jsp应用中会包含多个Servlet程序，jsp页面
 	 *servlet/jsp应用不能独立运行，需要servlet容器提供运行环境
-	 *tomcat服务器的servlet容器代号catalina
+	 *tomcat服务器的核心组件为servlet容器，代号catalina，在server.xml 中server元素表示Catalina servlet容器
 	 *
 	 *http协议
 	 *http协议称为超文本传输协议，用于web服务器与web浏览器之间进行数据传输
