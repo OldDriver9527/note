@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -17,7 +19,7 @@
 	当应用中的jsp页面被第一次访问时，servlet容器会将jsp页面翻译成servlet程序，并将其编译为字节码文件
 	之后加载字节码文件，创建servlet对象，使用servlet对象处理请求
 	其后再次访问该jsp页面，servlet容器会检测该页面是否发生变化，若发生变化，servlet容器会重建翻译
-	jsp页面，创建新servlet对象处理请求；若为发生变化，servlet容器，使用已存在的servlet对象处理请求
+	jsp页面，创建新servlet对象处理请求；若未发生变化，servlet容器使用已存在的servlet对象处理请求
 	
 	jsp页面构成
 	jsp页面 包含模板数据 和 语法元素
@@ -139,6 +141,44 @@
 	pageContext	表示页面上下文对象
 						通过pageContext能够获取其他隐式对象
 	pageContext，request，session，application 为域对象
+	
+	el表达式
+	el表达式用于替代脚本表达式，获取域对象中的属性值,之后通过out对象输出
+	实际通过pageContext的findAttribute方法，使用属性名查找对应属性值
+	el表达式可以用于html标签属性中，html标签会被作为模板数据处理
+	
+	el表达式语法	${expression}，el表达式计算结果可以是任意类型
+	当结果为bean，可以通过[]/. 操作符获取bean中属性值
+	${object["attribute"]}
+	${object.attribute}
+	当表达式结果为Map，通过[]/. 操作符获取指定key对应的value
+	${map["key"]}
+	${map.key}
+	当表达式结果为List或数组，通过[]操作符获取指定索引处元素
+	${list[index]}
+	
+	el表达式中可以进行算数，比较，逻辑，三元，empty 等运算
+	
+	el表达式隐式对象
+	由于不建议在jsp页面中使用脚本元素，jsp提供的隐式对象无法使用
+	但可以使用el表达式提供的隐式对象
+	常用el表达式隐式对象
+	pageContext			表示页面上下文对象
+								通过pageContext可以获取jsp提供的隐式对象
+	pageScope			pageContext 中存储属性的map，key value 都是string类型
+	requestScope		request中 存储 属性的map，key value 都是string类型
+	sessionScope		session中 存储 属性的map，key value 都是string类型
+	applicationScope	servletContext中 存储属性的map，key value 都是string类型
+	param					封装所有请求参数的map，key value 都是string类型
+								若存在同名请求参数，map中只会存储一个
+	paramValues		封装所有请求参数的map，key 是string类型，value 是 string[]类型
+	header					封装所有请求头的map，key value 都是string类型
+								若存在同名请求头，只会存储一个
+	headerValues		封装所有请求头的map，key 是string类型，value 是 string[]类型
+	cookie					封装所有cookie的map
+								key为cookie中的key
+								value为cookie对象
+	initParam				封装ServletContext中初始化参数的map，key value 都是string类型
  --%>
 </body>
 </html>
