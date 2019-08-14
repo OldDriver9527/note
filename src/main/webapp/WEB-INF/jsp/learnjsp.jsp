@@ -2,6 +2,10 @@
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="learnsimpletag" uri="/learnsimpletag" %>
+<%@taglib prefix="learnfunctionlib" uri="/learnfunctionlib" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,6 +83,9 @@
 	include指令用于实现静态引入其他jsp页面
 	<%@include file="" %>				
 	jsp容器在处理include指令时，会将include指令替换为页面内容，将全部页面内容翻译到servlet service方法中
+	
+	taglib指令用于引入标签库
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	4.动作
 	useBean
 	创建指定类对象，并以id作为名称存入域对象中
@@ -179,6 +186,111 @@
 								key为cookie中的key
 								value为cookie对象
 	initParam				封装ServletContext中初始化参数的map，key value 都是string类型
+	
+	禁用el
+	可以通过page指令的isELIgnored属性禁用el
+	也可以在部署描述符中禁用el
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>true</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+	
+	jstl	jsp标准标签库
+	jstl分为五种标签库
+	核心标签库
+	xml标签库
+	国际化标签库
+	数据库标签库
+	函数标签库
+	在jsp页面中使用标签库中标签需要使用taglib指令引入标签库
+	
+	核心标签库常用标签
+	<c:out value="" escapeXml="" default="">
+	将指定值写入out对象
+	value				指定输出值,支持el表达式
+	escapeXml		指定是否对value属性值中特殊字符进行转义
+	default				指定默认值，当value属性值为null，会将默认值写入out对象
+	
+	<c:set>
+	将对象添加到域对象中 或 为域对象中对象设置属性
+	将对象添加到域对象中
+	<c:set var="" scope="" value=""></c:set>
+	<c:set var="" scope="">
+		value
+	</c:set>
+	var		指定对象在域对象中的名称
+	scope	指定域对象
+	value	指定存储的对象
+	
+	为域对象中对象设置属性
+	<c:set target="" property="" value=""></c:set>
+	<c:set target="" property="">
+		value
+	</c:set>
+	target		指定域对象中对象名称
+	property	指定对象属性名
+	value		指定对象属性值
+	
+	<c:remove var="" scope=""/>
+	将对象从域对象map中移除
+	var		指定对象在域对象中的名称
+	scope	指定域对象
+	
+	<c:if test="" var="" scope="">
+	判断条件是否为真，若为真执行标签体，并将判断结果存入域对象中
+	test		指定判断条件
+	var		指定判断结果在域对象中名称
+	scope	域对象
+	
+	<c:choose> <c:when> <c:otherwise>
+	实现switch功能
+	<c:choose>中必须嵌套一个或多个<c:when>
+	<c:when>用于定义选项
+	<c:otherwise>用于定义默认情况
+	 当有多个选项时，只会执行位置最靠上的一个
+	 
+	 <c:forEach items="" var="" begin="" end="" step="" varStatus="">
+	 用于迭代数组 或 实现 Iterable接口的容器
+	 会多次执行便签体
+	 items			指定迭代对象
+	 var				指定元素在域对象中名称
+	 begin			指定开始迭代的索引
+	 end				指定结束迭代的索引
+	 step				指定迭代步长
+	 varStatus		指定迭代状态在域对象中名称
+	 迭代结束会将域对象中元素删除，迭代后不能继续使用
+	 
+	 函数标签库
+	 函数标签库中提供操作字符串的方法
+	 函数库中函数需通过el表达式调用，${fn:方法签名}
+	 
+	 自定义标签
+	 创建自定义标签需要创建简单标签处理器，简单标签处理器需要实现SimpleTag接口或继承SimpleTagSupport类
+	 
+	 自定义标签的执行过程
+	 1.由servlet容器创建简单标签处理器对象
+	 2.servlet容器调用对象setJspContext方法，传入pageContext
+	   若自定义标签嵌套在其他自定义标签中，servlet容器调用对象setParent方法，传入父标签对象
+	 3.若标签存在属性，servlet容器调用属性对应的set方法注入属性值
+	 4.若标签存在标签体，servlet容器调用setJspBody方法传入JspFragment对象
+	 5.servlet容器调用doTag方法
+	 
+	 简单标签处理器创建完毕，需使用标签库描述符配置自定义标签
+	 之后在jsp中引入标签库就能使用标签库中自定义标签
+	 
+	 自定义标签属性
+	 自定义标签属性 对应 简单标签处理器的成员变量
+	 属性值 由 servlet容器通过set方法注入
+	 
+	 JspFragment
+	 JspFragment对象封装标签体
+	 invoke方法执行标签体，并将结果输出到指定流中；若invoke参数为null，默认将标签体输出到out对象中
+	 
+	 自定义函数库
+	 函数库中方法必须为公共类中static方法
+	 需在标签库描述符中配置自定义函数库
  --%>
 </body>
 </html>

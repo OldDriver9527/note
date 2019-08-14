@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	
+	<!-- 函数库描述 -->
+	<description>learn function lib</description>
+	
+	<!--函数库版本号 -->
+	<tlib-version>1.0</tlib-version>
+	
+	<!--函数库短名称，在jsp中指定的函数库前缀时使用 -->
+	<short-name>learnfunctionlib</short-name>
+	
+	<!--函数库uri， 在jsp中指定的函数库uri时使用-->
+	<uri>/learnfunctionlib</uri>
+
+	<!-- 配置自定义函数 -->
+	<function>
+		<!-- 函数描述 -->
+	    <description>learn function lib</description>
+	    
+	    <!-- 函数名称 -->
+	    <name>equals</name>
+	    
+	    <!-- 函数所在类 -->
+	    <function-class>org.olddriver.functionlib.LearnFunctionLib</function-class>
+	    
+	    <!-- 函数签名 -->
+	    <function-signature>boolean equals(java.lang.String,java.lang.String)</function-signature>
+	    
+	    <!-- 函数示例 -->
+	    <example>
+	    	${learnfunctionlib:equals("one string","another string")}
+	    </example>
+	</function>
+</taglib>
