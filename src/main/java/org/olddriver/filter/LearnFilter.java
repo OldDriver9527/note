@@ -46,7 +46,7 @@ public class LearnFilter implements Filter {
 	 * 通常一个Filter类对应一个Filter对象，该对象被应用的所有用户共享，线程不安全
 	 * Filter实现线程安全
 	 * 在Filter中定义成员变量，存储单一线程线程池
-	 * 在doFilter方法中想线程池中提交任务，当Filter销毁应该在destroy方法中关闭线程池
+	 * 在doFilter方法中向线程池中提交任务，当Filter销毁应该在destroy方法中关闭线程池
 	 * 
 	 * Filter触发顺序
 	 * 若使用注解配置Filter，Filter触发顺序不可控

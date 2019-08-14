@@ -30,7 +30,7 @@
 	通过out对象写入响应体
 	2.脚本元素
 	脚本元素 包括 脚本片段，脚本表达式，脚本声明
-	脚本片段<%%>
+	脚本片段<% %>
 	脚本片段中可以嵌套java代码，脚本片段中的java代码会被原样翻译到servlet service方法中执行
 	jsp页面中可以定义多个脚本片段，多个脚本片段中的内容可以相互调用
 	单独脚本片段中的代码可以不完整，但多个脚本片段中的代码必须完整
@@ -55,7 +55,7 @@
 							none表示无缓冲
 							<%@page buffer="8kb" %>
 	autoFlush			指定out对象缓冲区填满后，是否刷新缓冲区将数据写入输出流中
-							若设为false，out对象缓冲区填满时会JSP Buffer overflow异常
+							若设为false，out对象缓冲区填满时会抛出JSP Buffer overflow异常
 	isThreadSafe		指定jsp页面是否线程安全？？？
 	info					指定jsp信息，设置的信息可以通过servlet 的 getServletInfo方法获取	
 	errorPage			指定当前页面发生异常后转发的错误处理页面	
@@ -64,7 +64,7 @@
 							若设置为true，会创建隐式exception对象
 	contentType		指定响应体MIME类型以及解码响应体使用的编码表
 							<%@ page contentType="text/html; charset=utf-8"%>
-	pageEncoding	指定解码jsp文件时使用的编码表
+	pageEncoding	指定解码jsp页面时使用的编码表
 							<%@ page pageEncoding="utf-8"%>
 	isELIgnored		是否忽略EL表达式
 							若设置为true，EL表达式被当做字符串处理
@@ -72,18 +72,18 @@
 	language			指定页面中嵌套的脚本语言类型
 	extends			指定servlet父类
 	
-	相同属性的page指令若属性值冲突抛异常
+	相同属性的page指令若属性值冲突会导致异常
 	
 	include指令用于实现静态引入其他jsp页面
 	<%@include file="" %>				
-	jsp容器在处理include指令时，会将include指令替换为页面内容
+	jsp容器在处理include指令时，会将include指令替换为页面内容，将全部页面内容翻译到servlet service方法中
 	4.动作
 	useBean
-	创建指定类对象，并以id作为属性名存入域对象中
+	创建指定类对象，并以id作为名称存入域对象中
 	<jsp:useBean id="" class="" scope="">
 		tag body
 	</jsp:useBean>
-	id	对象属性名
+	id	对象名称
 	class 对象全类名
 	scope 域对象
 	当在域对象中指定的id已存在，不会创建对象
@@ -94,7 +94,7 @@
 	<jsp:setProperty property="" name="" value=""/>
 	name		域对象中对象名称
 	property 	对象属性名
-	value		设置的属性值
+	value		对象属性值
 	
 	getProperty
 	获取域对象中对象属性值
@@ -126,14 +126,15 @@
 	隐式对象
 	jsp页面对应的servlet service方法中定义了多个局部变量
 	在jsp页面中能够直接使用这些变量
-	request			表示http请求
-	response		表示http响应
-	session 		表示会话对象
-	application	表示ServletContext对象
-	config			表示ServletConfig对象
+	request			HttpServletRequest对象，表示http请求
+	response		HttpServletResponse对象，表示http响应
+	session 		HttpSession对象，表示会话对象
+	application	ServletContext对象，表示应用上下文
+	config			ServletConfig对象，封装servlet初始化参数
 	exception		表示异常对象
-	out				表示字符输出流对象
-						类似具有缓冲区的PrintWriter
+						只有当前页面为错误处理页面时才会创建exception对象
+	out				JspWriter对象，表示字符输出流
+						当缓冲区填满时会将数据写入response的输出流中
 	page				表示页面对象
 	pageContext	表示页面上下文对象
 						通过pageContext能够获取其他隐式对象
