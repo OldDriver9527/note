@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		spring 配置文件，采用xml方式配置元数据，不建议在新项目中使用此种方式
+	 -->
+	 
+	 <!-- 
+	 	配置bean最基础方式，使用默认构造器创建对象，不注入依赖
+	 	id属性			指定bean id，通过id获取bean
+	 						当未指定id，以全类名#索引作为bean id
+	 	class属性		指定bean的全类名
+	  -->
+    <bean id="bean id" class="bean的全类名">
+    </bean>
+    
+    <bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean">
+    </bean>
+
+	<bean id="" class="">
+		<constructor-arg index="">
+		</constructor-arg>
+	</bean>
+
+
+</beans>

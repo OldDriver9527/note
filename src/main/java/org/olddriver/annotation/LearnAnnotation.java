@@ -19,8 +19,8 @@ import java.lang.annotation.Target;
 public @interface LearnAnnotation {
 	/*
 	 * 注解 
-	 * 注解又叫元数据，用于描述数据属性的数据
-	 * 通过注解能够在源码中添加元数据，运行时再通过注解处理器获取注解信息
+	 * 注解用于配置元数据，元数据指用于描述数据属性的数据
+	 * 通过注解能够在源码中添加元数据，运行时再通过注解处理器获取元数据
 	 * 
 	 * jdk5中提供注解
 	 * @Override
