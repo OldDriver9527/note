@@ -3,4 +3,24 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
+	
+	<!-- 
+		通过ServletContext 的初始化参数激活profile
+		spring.profiles.active			指定激活profile
+		spring.profiles.default		指定默认profile
+		
+		当指定 spring.profiles.active ，以spring.profiles.active 设置值为准
+		当未设置spring.profiles.active，以spring.profiles.default 设置值为准
+		当两者都未设置，不激活profile
+	 -->
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>development4jndi</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>development4c3p0</param-value>
+	</context-param>
+	
 </web-app>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- 
+		name							名称
+		type								对象类型
+		driverClassName			驱动全类名
+		url								数据库url
+		username						数据库用户名
+		password						数据库密码
+	 -->
+    <Resource name="jndi/datasource"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/test"
+              username="root"
+              password="root"/>
+</Context>

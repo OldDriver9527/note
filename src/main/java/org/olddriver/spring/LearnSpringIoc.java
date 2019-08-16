@@ -92,5 +92,24 @@ public class LearnSpringIoc {
 	 * 
 	 * 在xml配置文件中使用<bean>配置配置类，可以引入配置类中配置
 	 * 在xml配置文件中使用<import/>，引入其他xml配置文件中配置
+	 * 
+	 * spring profile
+	 * profile用于配置bean的逻辑组，逻辑组中bean只有在profile被激活时才会注册到spring容器
+	 * 
+	 * 配置profile bean
+	 * 注解配置
+	 * 在配置类上使用@Profile定义bean所属逻辑组
+	 * 配置类中bean都属于该逻辑组，包括通过方法注册的bean，组件扫描的bean
+	 * spring3.2之后，@Profile可以使用在方法上
+	 * xml方式配置
+	 * 在<beans>元素内嵌套<beans>元素，通过profile属性设置逻辑组
+	 * 
+	 * 激活profile
+	 * 可以通过ServletContext 的初始化参数指定激活profile
+	 * spring.profiles.active			指定激活profile
+	 * spring.profiles.default		指定默认profile
+	 * 当未指定spring.profiles.active值，会获取spring.profiles.default值，当两者都未指定，不激活profile
+	 * 不处于逻辑组中的bean，任何情况下都会创建
+	 * 
 	 */
 }

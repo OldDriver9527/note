@@ -1,5 +1,6 @@
 package org.olddriver.spring.initializer;
 
+
 import org.olddriver.spring.config.ApplicationConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 /**
@@ -25,6 +26,4 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

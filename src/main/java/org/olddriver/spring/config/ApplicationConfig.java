@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(value= {ServiceConfig.class,EntityConfig.class})
+@Import(value= {ServiceConfig.class,EntityConfig.class,DataSourceConfig.class})
 public class ApplicationConfig {
 
 }
