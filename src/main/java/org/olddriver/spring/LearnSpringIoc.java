@@ -1,6 +1,5 @@
 package org.olddriver.spring;
 
-
 /**
  * 
  * spring 笔记
@@ -8,7 +7,7 @@ package org.olddriver.spring;
  * 									wangjingjing/spring-framework-reference
  * 								  
  */
-public class LearnSpring {
+public class LearnSpringIoc {
 	/*
 	 * spring
 	 * spring用于创建java企业级应用，目的在于简化java开发
@@ -20,7 +19,7 @@ public class LearnSpring {
 	 * 耦合性 指 对象间的依赖关系
 	 * 一个有意义的应用一定通过多个类相互协作实现业务逻辑
 	 * 传统项目中，对象需自己管理与其协作的对象，耦合性高，难以复用
-	 * 依赖注入 指 对象的依赖关系由spring容器在创建对象时设置，对象不需自行创建依赖关系
+	 * 依赖注入 指 对象的依赖关系由spring容器在创建对象后设置，对象不需自行创建依赖关系
 	 * 3.通过切面实现声明式编程
 	 * 应用中往往存在在各个组件中都会使用的功能，该功能称为横切关注点
 	 * 面向切面指将横切关注点抽象为独立功能模块，再将该模块以某种方式（如声明）应用于各个组件上
@@ -81,12 +80,17 @@ public class LearnSpring {
 	 * 											@Autowired用于构造器上，使用指定构造器创建对象
 	 * 2.通过java 方法配置bean
 	 * 当使用第三方类库，无法在类上添加注解，需要在方法中配置bean
-	 * 在配置类中创建方法，方法返回bean对象。使用@Bean注解修饰方法，在方法中通过构造器或set方法
-	 * 注入依赖
+	 * 在配置类中创建方法，方法返回bean对象。使用@Bean注解修饰方法，
+	 * 在方法中通过构造器或set方法注入依赖
 	 * @Bean			用于将方法返回值加入spring容器管理
 	 * 	name元素		指定bean在容器中的id，若不指定bean的id，默认以方法名作为id
 	 * 3.通过xml 配置bean
 	 * 
+	 * spring配置bean的方式可以混合使用
+	 * 在配置类上使用@Import 导入其他配置类中配置
+	 * 在配置类上使用@ImportResource 导入xml配置文件中配置
 	 * 
+	 * 在xml配置文件中使用<bean>配置配置类，可以引入配置类中配置
+	 * 在xml配置文件中使用<import/>，引入其他xml配置文件中配置
 	 */
 }

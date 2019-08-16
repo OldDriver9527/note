@@ -3,8 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- 
 		spring 配置文件，采用xml方式配置元数据，不建议在新项目中使用此种方式
@@ -18,14 +19,129 @@
 	  -->
     <bean id="bean id" class="bean的全类名">
     </bean>
-    
+    <!-- 示例 -->
     <bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean">
     </bean>
 
-	<bean id="" class="">
-		<constructor-arg index="">
+	<!-- 
+		使用指定构造器创建bean，通过构造器参数注入依赖
+	 -->
+	<bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean">
+		<!-- 
+			constructor-arg 基本使用方式
+			name	属性指定构造器参数名
+			value	属性指定构造器参数值，适用于基本数据类型
+			ref		属性指定构造器参数值，适用于引用数据类型
+			index	属性指定构造器参数索引
+		 -->
+		<constructor-arg name="参数名" value="参数值，适用于基本数据类型" 
+		ref="参数值，适用于引用数据类型" index="参数索引"/>
+		<!-- 示例 -->
+		<constructor-arg name="argu" value="你好"/>
+		
+		<!-- 
+			constructor-arg 传入null
+		 -->
+		 <constructor-arg name="参数名"><null/></constructor-arg>
+		 
+		<!-- 
+			constructor-arg 传入list列表,set集合，数组
+		 -->
+		<constructor-arg name="参数名">
+			<!-- 注入list，数组 -->
+			<list>
+				<value>注入值</value>
+				<!-- or -->
+				<ref bean="应用的bean id"/>
+			</list>
+		</constructor-arg>
+		
+		
+		<constructor-arg name="参数名">
+			<!-- 注入set，数组 -->
+			<set>
+				<value>注入值</value>
+				<!-- or -->
+				<ref bean="应用的bean id"/>
+			</set>
 		</constructor-arg>
 	</bean>
 
-
+	<!-- 
+		使用c名称空间属性替代constructor-arg
+		当constructor-arg 注入值为基本类型，
+		可以使用c:_参数索引 属性 代替 constructor-arg，
+		如c:_0=""
+		
+		当constructor-arg 注入值为引用类型，
+		可以使用c:_参数索引-ref 属性 代替 constructor-arg，
+		如c:_0-ref=""
+		
+		c名称空间属性无法直接注入list set 数组，但可以使用util名称空间标签配置 list set 数组 后对其进行引用
+	 -->
+	<bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean" c:argu="dad"/>
+	<!-- 
+		util名称空间 标签 配置容器
+	 -->
+	<util:list id="bean id">
+		<value>元素值</value>
+		<!-- or -->
+		<ref bean="应用bean 的id"/>
+	</util:list>
+	
+	
+	<!-- 
+		使用默认构造器创建对象，通过set方法注入依赖
+	 -->
+	 <bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean">
+	 	<!-- 
+	 		property 标签 基本使用
+	 		name	指定属性名，set方法后的部分
+	 		value	指定属性值，适用于基本类型
+	 		ref		指定属性值，适用于引用类型
+	 	 -->
+	 	<property name="属性名" value="属性值，适用于基本类型" ref="属性值，适用于引用类型"></property>
+	 	<!-- 示例 -->
+	 	<property name="attribute" value=""></property>
+	 	
+	 	<!-- 
+	 		property 标签 注入 list set 数组
+	 	 -->
+	 	 <property name="属性名">
+	 	 	<list>
+	 	 		<value>注入值</value>
+	 	 		<!-- or -->
+	 	 		<ref bean="引用的bean id"/>
+	 	 	</list>	 	
+	 	 </property>
+	 	 
+	 	 <property name="属性名">
+	 	 	<set>
+	 	 		<value>注入值</value>
+	 	 		<!-- or -->
+	 	 		<ref bean="引用的bean id"/>
+	 	 	</set>	 	
+	 	 </property>
+	 </bean>
+	 
+	 <!-- 
+	 	使用p名称空间属性 替代<property>
+	 	当<property> 注入基本类型值时，
+	 	可使用p:属性名 属性替代<property>，
+	 	如p:attribute=""
+	 	
+	 	当<property> 注入引用类型值时，
+	 	可使用p:属性名-ref 属性替代<property>，
+	 	如p:attribute-ref=""
+	 	
+	 	p名称空间属性 也不能直接注入 list set 数组，需配合util名称空间标签 实现该功能
+	  -->
+	  <bean id="exampleBean" class="org.olddriver.spring.bean.ExampleBean" p:attribute=""/>
+	  
+	  <!-- 
+	  		在xml配置文件中引入其他xml配置文件
+	  		resource	指定配置文件路径
+	 		在xml 中若要引入配置类中配置，只要使用<bean>配置 配置类
+	   -->
+	  <import resource="配置文件路径"/>
 </beans>
