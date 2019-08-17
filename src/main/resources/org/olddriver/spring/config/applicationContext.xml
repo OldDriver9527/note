@@ -70,12 +70,12 @@
 	<!-- 
 		使用c名称空间属性替代constructor-arg
 		当constructor-arg 注入值为基本类型，
-		可以使用c:_参数索引 属性 代替 constructor-arg，
-		如c:_0=""
+		可以使用c:参数名称 属性 代替 constructor-arg，
+		如c:argu=""
 		
 		当constructor-arg 注入值为引用类型，
-		可以使用c:_参数索引-ref 属性 代替 constructor-arg，
-		如c:_0-ref=""
+		可以使用c:参数名称-ref 属性 代替 constructor-arg，
+		如c:argu-ref=""
 		
 		c名称空间属性无法直接注入list set 数组，但可以使用util名称空间标签配置 list set 数组 后对其进行引用
 	 -->

@@ -111,5 +111,33 @@ public class LearnSpringIoc {
 	 * 当未指定spring.profiles.active值，会获取spring.profiles.default值，当两者都未指定，不激活profile
 	 * 不处于逻辑组中的bean，任何情况下都会创建
 	 * 
-	 */
+	 * 条件化bean
+	 * 配置条件化bean 通过 @Conditional实现
+	 * @Profile就是通过@Conditional实现
+	 * @Conditional 注解的value元素 需指定一个条件对象（Condition实现类），当条件对象的matches方法返回true，
+	 * spring容器才会创建bean对象，并加入容器进行管理
+	 * 
+	 * 自动装配时发生歧义的解决方案
+	 * @Autowired 根据bean的类型在容器中寻找匹配的bean，当无类型匹配的bean时会抛异常；当有多个bean匹配时，会进一步根据
+	 * bean的名称匹配。若仍有多个bean匹配，会抛异常
+	 * 解决歧义性问题方式
+	 * 1.使用@Primary注解定义首选bean，若注入时存在存在多个类型匹配的bean，会注入首选bean
+	 * 2.使用@Qualifier注解指定bean的限定符，在自动装配时指定注入依赖的限定符，所有bean都具有默认限定符，即bean id
+	 * 
+	 * bean 作用域
+	 * singleton	
+	 * prototype
+	 * request
+	 * session
+	 * ...
+	 * 
+	 * singleton
+	 * 单例作用域 不同于 单例设计模式，若将bean的作用域设为singleton，
+	 * 其后对该bean的所有请求，容器都会返回同一对象
+	 * singleton 是默认作用域
+	 * 
+	 * prototype
+	 * 若将bean的作用域设为prototype，其后对该bean的每次请求，容器都会返回新对象
+	 * spring容器不会调用原型bean的销毁方法
+	 */ 
 }
