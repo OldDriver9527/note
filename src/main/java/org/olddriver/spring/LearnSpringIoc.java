@@ -123,13 +123,17 @@ public class LearnSpringIoc {
 	 * 解决歧义性问题方式
 	 * 1.使用@Primary注解定义首选bean，若注入时存在存在多个类型匹配的bean，会注入首选bean
 	 * 2.使用@Qualifier注解指定bean的限定符，在自动装配时指定注入依赖的限定符，所有bean都具有默认限定符，即bean id
+	 * 3.自定义限定符注解，使用@Qualifier 修饰自定义注解，使其成为限定符注解
+	 * 用限定符注解修饰bean
+	 * 在自动装配时，指定注入bean具有的限定符注解
 	 * 
 	 * bean 作用域
 	 * singleton	
 	 * prototype
 	 * request
 	 * session
-	 * ...
+	 * application
+	 * webSocket
 	 * 
 	 * singleton
 	 * 单例作用域 不同于 单例设计模式，若将bean的作用域设为singleton，
@@ -138,6 +142,6 @@ public class LearnSpringIoc {
 	 * 
 	 * prototype
 	 * 若将bean的作用域设为prototype，其后对该bean的每次请求，容器都会返回新对象
-	 * spring容器不会调用原型bean的销毁方法
+	 * spring容器不会管理原型作用域bean的销毁
 	 */ 
 }

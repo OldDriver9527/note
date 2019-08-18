@@ -2,6 +2,7 @@ package org.olddriver.spring.bean;
 
 import java.util.List;
 
+import org.olddriver.spring.qualifierannotation.LearnQualifierAnnotation;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -12,17 +13,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-@Component(value="demo")
+@Component
+@LearnQualifierAnnotation
 public class ExampleBean implements 
 BeanNameAware,
 BeanFactoryAware,
 ApplicationContextAware,
 InitializingBean,
 DisposableBean{
-	
+
 	private String attribute;
+	
 	public ExampleBean() {
 		System.out.println("默认构造器");
 	}

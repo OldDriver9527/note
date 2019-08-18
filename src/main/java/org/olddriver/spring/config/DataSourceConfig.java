@@ -6,14 +6,29 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
+@PropertySource(value= {"classpath:/org/olddriver/datasource/jdbc.properties"})
 public class DataSourceConfig {
+	
+	@Value(value="${jdbc.driver}")
+	private String driverClass;
+	
+	@Value(value="${jdbc.url}")
+	private String jdbcUrl;
+	
+	@Value(value="${jdbc.user}")
+	private String userName;
+	
+	@Value(value="${jdbc.password}")
+	private String password;
 	
 	/*
 	 * 数据源	DataSource
@@ -32,10 +47,10 @@ public class DataSourceConfig {
 			System.out.println("c3p0连接池");
 			comboPooledDataSource = 
 					new com.mchange.v2.c3p0.ComboPooledDataSource();
-			comboPooledDataSource.setDriverClass("com.mysql.jdbc.Driver");
-			comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test");
-			comboPooledDataSource.setUser("root");
-			comboPooledDataSource.setPassword("root");
+			comboPooledDataSource.setDriverClass(driverClass);
+			comboPooledDataSource.setJdbcUrl(jdbcUrl);
+			comboPooledDataSource.setUser(userName);
+			comboPooledDataSource.setPassword(password);
 		} catch (PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,10 +66,10 @@ public class DataSourceConfig {
 		 */
 		System.out.println("druid 连接池");
 		DruidDataSource datasource = new DruidDataSource();
-		datasource.setDriverClassName("com.mysql.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://localhost:3306/test");
-        datasource.setUsername("root");
-        datasource.setPassword("root");
+		datasource.setDriverClassName(driverClass);
+        datasource.setUrl(jdbcUrl);
+        datasource.setUsername(userName);
+        datasource.setPassword(password);
         
 //        datasource.setInitialSize(initialSize);
 //        datasource.setMinIdle(minIdle);
