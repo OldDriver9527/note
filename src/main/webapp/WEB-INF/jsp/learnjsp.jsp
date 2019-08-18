@@ -150,7 +150,7 @@
 	pageContext，request，session，application 为域对象
 	
 	el表达式
-	el表达式用于替代脚本表达式，可以获取域对象中的属性值,之后通过out对象输出；也可以通过el表达式直接操作直接常量
+	el表达式用于替代脚本表达式，可以获取域对象中的属性值，也可以通过el表达式直接操作直接常量，之后通过out对象输出
 	实际通过pageContext的findAttribute方法，使用属性名查找对应属性值
 	el表达式可以用于html标签属性中，html标签会被作为模板数据处理
 	
