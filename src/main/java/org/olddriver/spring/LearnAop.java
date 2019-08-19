@@ -1,7 +1,4 @@
 package org.olddriver.spring;
-
-import org.aspectj.lang.annotation.DeclareParents;
-
 /**
  * 
  * aop 笔记
