@@ -1,4 +1,7 @@
 package org.olddriver.spring;
+
+import org.aspectj.lang.annotation.DeclareParents;
+
 /**
  * 
  * aop 笔记
@@ -70,10 +73,16 @@ public class LearnAop {
 	 * 使用@AfterReturning注解 标识后置返回通知
 	 * 使用@AfterThrowing注解 标识后置异常通知
 	 * 使用@After注解 标识后置通知
-	 * 使用@Around注解 标识环绕通知，环绕通知第一个参数必须是ProceedingJoinPoint类型，表示连接点
+	 * 使用@Around注解 标识环绕通知，环绕通知参数列表的第一个参数必须是ProceedingJoinPoint类型，表示连接点
+	 * 
+	 * 引入（为目标对象添加新方法）
+	 * 在切面类中定义接口类型成员变量，使用@DeclareParents注解修饰
+	 * value 元素指定目标对象
+	 * defaultImpl 元素指定接口实现
+	 * 那么容器中的目标对象就具有接口中的方法，方法按指定方式实现
 	 * 
 	 * Spring AOP基于代理实现
 	 * 容器创建bean对象时，会在某个BeanPostProcessor的方法中进行判断，若需要在bean的方法前后
-	 * 插入通知，会生成bean的代理对象加入容器
+	 * 插入通知，会生成bean的代理对象加入容器,代理对象中已插入通知
 	 */
 }
