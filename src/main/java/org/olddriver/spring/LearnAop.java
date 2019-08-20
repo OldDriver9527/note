@@ -33,13 +33,14 @@ public class LearnAop {
 	 * 前置通知（Before advice）
 	 * 在连接点之前运行的通知
 	 * 后置返回通知（After returning advice）
-	 * 在连接点后执行的通知，且连接点正常完成
+	 * 在连接点后执行的通知，且连接点要保证正常完成
 	 * 后置异常通知（After throwing advice）
-	 * 在连接点后执行的通知，且连接点非正常完成
+	 * 在连接点后执行的通知，且连接点要保证非正常完成
 	 * 后置通知（After （finally） advice）
 	 * 在连接点后执行的通知，总会执行
 	 * 环绕通知（Around Advice）
 	 * 环绕连接点的通知
+	 * 环绕通知参数列表的第一个参数必须是ProceedingJoinPoint类型，表示连接点
 	 * 
 	 * aop注解实现
 	 * 1.开启对AspectJ注解支持
@@ -58,14 +59,16 @@ public class LearnAop {
 	 * execution		切点标识符，用于匹配连接点
 	 * modifiers-pattern	修饰符模式，用于指定连接点修饰符，可选
 	 * ret-type-pattern	返回类型模式，用于指定连接点返回值类型，*表示任意类型
-	 * declaring-type-pattern	声明类型模式，用于指定连接点所在包名，类名
+	 * declaring-type-pattern	声明类型模式，用于指定连接点所在包名，类名，可选
 	 * 										包名，类名.连接，可选，*表示任意包，任意类
 	 * 										包名，类名中可以包含* ？？？？
 	 * name-pattern		名称模式，用于指定连接点名称，*表示任意名称
 	 * 								名称中可以包含*
 	 * param-pattern		参数模式，用于指定连接点参数列表，..表示任意个数，任意类型参数
 	 * 								*表示任意类型单个参数
+	 * throws-pattern		异常模式 ？？？？
 	 * 4.声明通知
+	 * 使用特定注解将方法标识为通知
 	 * 使用@Before注解 标识前置通知
 	 * 使用@AfterReturning注解 标识后置返回通知
 	 * 使用@AfterThrowing注解 标识后置异常通知
