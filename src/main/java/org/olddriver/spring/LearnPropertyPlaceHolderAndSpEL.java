@@ -25,6 +25,7 @@ public class LearnPropertyPlaceHolderAndSpEL {
 	 * 						当bean 类型为map，通过[]或.操作符 获取指定key的value ？？？？//待测试
 	 * #{T(fully-qualified-name)}		通过类全名引用Class对象
 	 * 												通过.操作符调用类中静态成员
-	 * 
+	 * 	
+	 * SpEL中支持算数，比较，逻辑等运算
 	 */
 }
