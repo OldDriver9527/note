@@ -67,7 +67,7 @@ public class LearnSpringIoc {
 	 * 1.通过组件扫描，自动装配实现自动配置bean
 	 * 自动配置bean必须通过注解实现
 	 * 在spring配置类上使用@ComponentScan开启组件扫描并指定基础包，
-	 * spring容器会扫描基础包及其子包中的组件类，创建组件对象进行装配后，加入spring容器
+	 * spring容器会扫描基础包及其子包，创建组件类对象，进行装配后，加入spring容器
 	 * 相关注解
 	 * @ComponentScan			开启组件扫描并指定基础包。若未指定基础包，将配置类所在的包作为基础包
 	 * basePackages元素 			指定基础包路径
@@ -142,5 +142,10 @@ public class LearnSpringIoc {
 	 * prototype
 	 * 若将bean的作用域设为prototype，其后对该bean的每次请求，容器都会返回新对象
 	 * spring容器不会管理原型作用域bean的销毁
+	 * 
+	 * 在servlet中使用@Autowired
+	 * 默认servlet不在spring 容器管理范围，因此无法在servlet中使用自动装配
+	 * 可以通过SpringBeanAutowiringSupport的processInjectionBasedOnCurrentContext，
+	 * 为servlet添加自动装配功能
 	 */ 
 }

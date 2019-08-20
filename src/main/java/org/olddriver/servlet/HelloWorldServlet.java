@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
 /**
  * Servlet implementation class HelloWorldServlet
  */
@@ -14,7 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloWorldServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+	@Autowired
+	private ApplicationContext applicationContext;
+	
+    @Override
+	public void init() throws ServletException {
+    	SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
+
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public HelloWorldServlet() {
