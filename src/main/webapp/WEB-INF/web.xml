@@ -12,7 +12,7 @@
 		当指定 spring.profiles.active ，以spring.profiles.active 设置值为准
 		当未设置spring.profiles.active，以spring.profiles.default 设置值为准
 		当两者都未设置，不激活profile
-	 -->
+	 
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
 		<param-value>development4jndi</param-value>
@@ -22,5 +22,5 @@
 		<param-name>spring.profiles.default</param-name>
 		<param-value>development4c3p0</param-value>
 	</context-param>
-	
+	-->
 </web-app>

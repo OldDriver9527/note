@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.olddriver.spring.bean.ExampleBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 /**
@@ -17,9 +17,9 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 @WebServlet("/HelloWorld")
 public class HelloWorldServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	@Autowired
-	private ApplicationContext applicationContext;
+	private ExampleBean exampleBean;
 	
     @Override
 	public void init() throws ServletException {
@@ -39,6 +39,7 @@ public class HelloWorldServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
+		System.out.println(exampleBean);
 		request.getRequestDispatcher("/WEB-INF/jsp/learnjsp.jsp").forward(request, response);
 	}
 
