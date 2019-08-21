@@ -5,6 +5,7 @@ import javax.servlet.Filter;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.olddriver.spring.config.ApplicationConfig;
+import org.olddriver.spring.config.WebConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 /**
@@ -28,8 +29,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Class[] {WebConfig.class};
 	}
 
 	/**
@@ -37,7 +37,6 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	 */
 	@Override
 	protected String[] getServletMappings() {
-		// TODO Auto-generated method stub
 		return new String[] {"/"};
 	}
 
@@ -48,6 +47,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setInitParameter("spring.profiles.active", "development4jndi");
 		registration.setInitParameter("spring.profiles.default", "development4c3p0");
+		registration.setLoadOnStartup(1);
 	}
 
 	/**

@@ -8,8 +8,10 @@
 </head>
 <body>
 hello world
-<button>click</button>
+<button>click</button><br/>
+<button id="learnController">click</button><br/>
 <script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/static/js/learnservlet/learnservlet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/learncontroller/learncontroller.js"></script>
 </body>
 </html>
