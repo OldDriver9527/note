@@ -2,6 +2,7 @@ package org.olddriver.spring;
 /**
  * 
  * springMvc 笔记
+ * thymeleaf 中文文档仓库	jack80342/Thymeleaf-Reference-Guide
  *
  */
 public class LearnSpringMvc {
@@ -67,5 +68,31 @@ public class LearnSpringMvc {
 	 * @ResponseBody注解通过HttpMessageConverter将处理器方法返回序列化到响应体
 	 * 
 	 * thymeleaf模板
+	 * ？？？？
+	 * 
+	 * springmvc文件上传
+	 * DispatcherServlet 使用 MultipartResolver（Multipart 解析器）处理 内容类型为multipart/form-data的POST请求
+	 * 解析器会解析内容并将当前的HttpServletRequest包装为 MultipartHttpServletRequest，以提供对已解析部分的访问
+	 * spring提供多个MultipartResolver实现
+	 * StandardServletMultipartResolver	基于Servlet 3.0实现
+	 * CommonsMultipartResolver	基于Apache Commons FileUpload实现
+	 * 建议使用StandardServletMultipartResolver，不需额外依赖
+	 * 
+	 * 配置StandardServletMultipartResolver
+	 * 在springmvc配置类中，配置名称为multipartResolver的bean
+	 * 配置完毕，就会启用多部分处理
+	 * 通过DispatcherServlet 控制 临时文件存储位置，
+	 * 											上传文件最大尺寸（字节为单位），
+	 * 											多部分请求最大尺寸（字节为单位），
+	 * 											文件写入磁盘临界尺寸（字节为单位）
+	 * 
+	 * 配置CommonsMultipartResolver
+	 * 在springmvc配置类中，配置名称为multipartResolver的bean
+	 * 通过CommonsMultipartResolver 设置上传文件细节
+	 * 
+	 * 在处理器方法参数列表中使用MultipartFile接收上传文件
+	 * 
+	 * 
+	 * 
 	 */
 }

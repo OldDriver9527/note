@@ -2,6 +2,7 @@ package org.olddriver.spring.initializer;
 
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.olddriver.spring.config.ApplicationConfig;
@@ -45,9 +46,12 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	 */
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
+		//指定激活 profile
 		registration.setInitParameter("spring.profiles.active", "development4jndi");
 		registration.setInitParameter("spring.profiles.default", "development4c3p0");
 		registration.setLoadOnStartup(1);
+		
+		registration.setMultipartConfig(new MultipartConfigElement("", 1024, 1024, 0));
 	}
 
 	/**
