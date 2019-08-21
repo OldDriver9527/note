@@ -92,7 +92,18 @@ public class LearnSpringMvc {
 	 * 
 	 * 在处理器方法参数列表中使用MultipartFile接收上传文件
 	 * 
+	 * 异常处理
+	 * 使用异常处理器处理当前控制器中处理器方法抛出异常
+	 * 使用@ExceptionHandler注解标识异常处理器，异常处理器的返回将作为视图名
+	 * 控制器通知
+	 * 使用@ControllerAdvice标识控制器通知
+	 * 默认情况下，控制器通知中方法应用于所有控制器处理器方法
+	 * 可在控制器通知中定义作用于所有处理器方法的异常处理器
 	 * 
-	 * 
+	 * 拦截器（HandlerInterceptor实现类）
+	 * 类似filter，能够对指定处理器方法进行拦截，
+	 * preHandle		在处理器方法执行之前执行
+	 * postHandle	在处理器方法执行之后执行，视图渲染之前
+	 * afterCompletion 在视图渲染完成后执行
 	 */
 }
