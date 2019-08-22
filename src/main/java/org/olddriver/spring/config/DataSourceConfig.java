@@ -1,6 +1,7 @@
 package org.olddriver.spring.config;
 
 import java.beans.PropertyVetoException;
+import java.sql.Connection;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -91,6 +92,9 @@ public class DataSourceConfig {
 		 * JNDI java 命名和目录接口
 		 * java提供的一组接口规范，统一了使用命名服务，目录服务的方式
 		 * JNDI数据源	数据源由服务器创建，管理
+		 * 
+		 * 由于JndiObjectFactoryBean 会导致方法返回FactoryBean类型对象
+		 * 所以不使用JndiObjectFactoryBean进行jndi查找
 		 */
 	     try {
 	    	 Context ctx = new InitialContext();
@@ -101,5 +105,4 @@ public class DataSourceConfig {
 		}
 		return null;
 	}
-	
 }
