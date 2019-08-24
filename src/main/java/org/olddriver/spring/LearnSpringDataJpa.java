@@ -1,5 +1,9 @@
 package org.olddriver.spring;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -11,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class LearnSpringDataJpa {
 	/*
 	 * Spring Data JPA 是spring 在持久层的应用
-	 * Spring Data JPA 对JPA规范的封装，可选择不同实现，如hibernate jpa
+	 * Spring Data JPA 对JPA规范的封装，具体实现由orm厂商提供，如hibernate jpa
 	 * 使用Spring Data JPA只需从一组接口中选择一个进行扩展，不需编写接口实现
 	 * 
 	 * Spring Data JPA 核心接口
@@ -73,13 +77,13 @@ public class LearnSpringDataJpa {
 	 * 自定义查询方法
 	 * Spring Data 提供三种查询策略解析自定义查询方法，通过@EnableJpaRepositories queryLookupStrategy元素指定
 	 * CREATE 策略
-	 * 解析方法名构建查询条件
+	 * 解析方法名构建查询语句
 	 * USE_DECLARED_QUERY
 	 * 寻找声明语句执行查询
 	 * CREATE_IF_NOT_FOUND
-	 * 优先使用声明语句，若语句不存在，解析方法名构建查询条件；CREATE_IF_NOT_FOUND为默认策略
+	 * 优先使用声明语句，若语句不存在，解析方法名构建查询语句；CREATE_IF_NOT_FOUND为默认策略
 	 * 
-	 * 解析方法名构建查询条件
+	 * 解析方法名构建查询语句
 	 * 使用CREATE 策略解析方法名，方法名必须遵循规范，按照 动词-主题-断言 的模式定义，
 	 * 动词 指定不同查询动作，
 	 * 主题 可选，一般省略
@@ -90,8 +94,26 @@ public class LearnSpringDataJpa {
 	 * 			断言结尾可以使用OrderBy指定排序字段及方式
 	 * 主题与断言之间使用By分割
 	 * 构建器会剔除find…By, read…By, query…By,get…By,count…By,delete…By,remove…By等方法前缀
-	 * 解析剩余方法名
+	 * 当属性中嵌套属性，使用 _ 连接
+	 * 语句中实际参数通过参数列表传入，参数列表中可传入Pageable，Sort实现分页查询，排序查询
 	 * 
+	 * 使用声明语句查询
+	 * 在接口方法上使用@Query注解 定义查询语句
+	 * 语句中使用？作为占位符，占位符后指定参数索引，运行时会使用实际参数替换占位符
+	 * nativeQuery 元素设置为true时，执行sql查询
+	 * 在执行update，delete查询时需使用@Modifying修饰
+	 * clearAutomatically 元素指定修改后是否自动刷新缓存中实体
 	 * 
+	 * Spring Data JPA 注解
+	 * @Entity	标识实体类，实体类与数据库表对应
+	 * @Table	指定数据库表名
+	 * @Id		标识数据库主键
+	 * @GeneratedValue	指定主键生成策略
+	 * @Basic	表示属性对应数据库中字段
+	 * @Transient	表示属性不对应数据库字段
+	 * @Column	指定属性对应数据库字段名
+	 * @Temporal	指定Date类型属性对应数据库字段类型
+	 * @Enumerated	？？？？？
+	 * @Lob		将属性映射为blob，clob类型
 	 */
 }
