@@ -1,4 +1,8 @@
 package org.olddriver.spring;
+
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 /**
  * 
  * spring data jpa 笔记
@@ -7,7 +11,7 @@ package org.olddriver.spring;
 public class LearnSpringDataJpa {
 	/*
 	 * Spring Data JPA 是spring 在持久层的应用
-	 * Spring Data JPA 通过 hibernate jpa 实现
+	 * Spring Data JPA 对JPA规范的封装，可选择不同实现，如hibernate jpa
 	 * 使用Spring Data JPA只需从一组接口中选择一个进行扩展，不需编写接口实现
 	 * 
 	 * Spring Data JPA 核心接口
@@ -38,11 +42,20 @@ public class LearnSpringDataJpa {
 	 * Sort 类封装排序信息
 	 * 
 	 * JpaRepository
-	 * PagingAndSortingRepository子接口，专门用于操作关系型数据库
+	 * PagingAndSortingRepository子接口，专门用于使用JPA操作关系型数据库
 	 * 接口中将查询方法结果转换为List
 	 * 
 	 * Spring Data JPA 实现类
 	 * SimpleJpaRepository
+	 * 
+	 * Spring Data JPA配置
+	 * 在配置类上
+	 * @EnableJpaRepositories开启Spring Data JPA，
+	 * basePackageClasses 元素指定 Repository所在基础包，
+	 * entityManagerFactoryRef 元素指明引用实体管理工厂bean id
+	 * transactionManagerRef 元素指定事务管理器bean id
+	 * @EnableTransactionManagement 开启事务
+	 * 在配置类中，配置数据源，jpa厂商适配器，实体管理工厂，jpa事务管理器
 	 * 
 	 * 声明Repository接口
 	 * 一般声明Repository接口会选择一个接口继承，
@@ -73,10 +86,10 @@ public class LearnSpringDataJpa {
 	 * 断言 指定过滤条件，包括属性名及操作符
 	 * 			省略操作符默认使用相等操作符
 	 * 			多个过滤条件使用And和Or连接
-	 * 			IgnoreCase？？？？
+	 * 			IgnoreCase用于忽略大小写进行比较，用于属性后
 	 * 			断言结尾可以使用OrderBy指定排序字段及方式
 	 * 主题与断言之间使用By分割
-	 * 构建器会剔除find…By, read…By, query…By, count…By,get…By,delete…By,remove…By等方法前缀
+	 * 构建器会剔除find…By, read…By, query…By,get…By,count…By,delete…By,remove…By等方法前缀
 	 * 解析剩余方法名
 	 * 
 	 * 

@@ -1,7 +1,6 @@
 package org.olddriver.spring.config;
 
 import java.beans.PropertyVetoException;
-import java.sql.Connection;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
