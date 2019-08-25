@@ -2,6 +2,7 @@ package org.olddriver.spring;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -111,9 +112,38 @@ public class LearnSpringDataJpa {
 	 * @GeneratedValue	指定主键生成策略
 	 * @Basic	表示属性对应数据库中字段
 	 * @Transient	表示属性不对应数据库字段
-	 * @Column	指定属性对应数据库字段名
+	 * @Column	指定属性对应数据库字段名，可使用在主键上
 	 * @Temporal	指定Date类型属性对应数据库字段类型
 	 * @Enumerated	？？？？？
 	 * @Lob		将属性映射为blob，clob类型
+	 * 
+	 * 关联关系注解
+	 * @JoinColumn	定义外键属性对应的字段名，与@OneToOne、@ManyToOne、@OneToMany
+	 * 							配合使用才有意义，一般定义在从表一方
+	 * name 元素指定数据库表中外键列列名
+	 * referencedColumnName 元素指定外键列引用的主键列名
+	 * 
+	 * @OneToOne		指定一对一关系
+	 * targetEntity 元素指定目标实体
+	 * mappedBy 元素指定持有关联关系的反方，与@JoinColumn不共存
+	 * 					属性值为定义@JoinColumn实体类中定义的对方实体类引用的名称
+	 * 
+	 * @OneToMany	指定一对多关系
+	 * 	targetEntity	元素指定目标实体
+	 * mappedBy		元素指定持有关联关系的反方，与@JoinColumn不共存
+	 * 						属性值为定义@JoinColumn实体类中定义的对方实体类引用的名称
+	 * 			
+	 * @ManyToOne 指定多对一关系，由于使用在从表一方，不具有mappedBy元素
+	 * targetEntity	元素指定目标实体
+	 * 
+	 * @JoinTable	指定中间实体外键属性对应外键列名，与@ManyToMany配合使用
+	 * name	元素指定中间表表名
+	 * joinColumns	指定中间表中外键列名，引用的主键名，适合持有关联关系关系一方
+	 * inverseJoinColumns	指定中间表中外键列名，引用的主键名，适合持有关联关系关系反方
+	 * 
+	 * @ManyToMany	指定多对多关系
+	 * targetEntity 元素指定目标实体
+	 * mappedBy 元素指定持有关联关系的反方，与@JoinTable不共存
+	 * 					属性值为定义@JoinTable实体类中定义的对方实体类引用的名称
 	 */
 }

@@ -58,7 +58,7 @@ public class SpringDataJpaConfig {
         //设置不生成ddl语句
         jpaVendorAdapter.setGenerateDdl(false);
         //设置hibernate方言
-        jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+        jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5InnoDBDialect");
         return jpaVendorAdapter;
     }
     
