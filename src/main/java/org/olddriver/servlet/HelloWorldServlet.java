@@ -1,6 +1,7 @@
 package org.olddriver.servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,10 @@ import org.olddriver.spring.repository.AdminRepository;
 import org.olddriver.spring.repository.CustomerRepository;
 import org.olddriver.spring.repository.IndividualRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatcher;
+import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 /**
@@ -60,9 +65,16 @@ public class HelloWorldServlet extends HttpServlet {
 		//Optional<Individual> temp = individualRepository.findById(1);
 		//Individual individual = temp.get();
 		//System.out.println(individual);
-		Optional<Customer> temp = customerRepository.findById(1);
-		Customer customer = temp.get();
-		System.out.println(customer);
+		//Optional<Customer> temp = customerRepository.findById(1);
+		//Customer customer = temp.get();
+		//System.out.println(customer);
+		
+		Customer customer = new Customer();
+		customer.setCity("Waltham");
+		
+		Example<Customer> example = Example.of(customer);
+		List<Customer> list = customerRepository.findAll(example);
+		System.out.println(list);
 		request.getRequestDispatcher("/WEB-INF/jsp/learnjsp.jsp").forward(request, response);
 	}
 

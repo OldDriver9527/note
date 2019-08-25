@@ -1,13 +1,4 @@
 package org.olddriver.spring;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 /**
  * 
  * spring data jpa 笔记
@@ -145,5 +136,19 @@ public class LearnSpringDataJpa {
 	 * targetEntity 元素指定目标实体
 	 * mappedBy 元素指定持有关联关系的反方，与@JoinTable不共存
 	 * 					属性值为定义@JoinTable实体类中定义的对方实体类引用的名称
+	 * 
+	 * QueryByExampleExecutor
+	 * JpaRepository 继承QueryByExampleExecutor，支持QBE查询功能，根据实体中非空属性进行查询
+	 * QBE查询中使用实体封装实际参数，使用ExampleMatcher封装查询方式
+	 * 可以实现动态查询，对字符串匹配查询
+	 * 使用matching，matchingAll 构建的ExampleMatcher，使用and 连接过滤条件
+	 * 使用matchingAny 构建的ExampleMatcher，使用or连接过滤条件
+	 * 
+	 * JpaSpecificationExecutor
+	 * 提供QBC查询功能，使用Specification封装查询条件
+	 * Specification中使用toPredicate方法构建where子句，
+	 * Root<T> 表示操作实体的根
+	 * CriteriaQuery<?> ？？？？
+	 * CriteriaBuilder	封装过滤条件，以Predicate形式返回
 	 */
 }
