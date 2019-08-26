@@ -1,4 +1,8 @@
 package org.olddriver.spring;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * 
  * spring data jpa 笔记
@@ -150,5 +154,19 @@ public class LearnSpringDataJpa {
 	 * Root<T> 表示操作实体的根
 	 * CriteriaQuery<?> ？？？？
 	 * CriteriaBuilder	封装过滤条件，以Predicate形式返回
+	 * 
+	 * Spring Data JPA Auditing
+	 * Spring Data JPA 审计 用于在实体类中加入日志信息
+	 * 基本注解
+	 * @CreatedBy	获取实体创建人
+	 * @CreatedDate	获取实体创建时间
+	 * @LastModifiedBy	获取实体最后一次修改人
+	 * @LastModifiedDate	获取实体最后一次修改时间
+	 * 
+	 * Spring Data JPA Auditing配置
+	 * 
+	 * @MappedSuperclass
+	 * 标识映射父类，映射父类不是实体类，不会映射表。类中定义通用属性供子类继承
+	 * 映射父类不使用@Entity，@Table修饰，
 	 */
 }
