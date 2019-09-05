@@ -69,12 +69,18 @@ public class HelloWorldServlet extends HttpServlet {
 		//Customer customer = temp.get();
 		//System.out.println(customer);
 		
-		Customer customer = new Customer();
-		customer.setCity("Waltham");
+//		Customer customer = new Customer();
+//		customer.setCity("Waltham");
+//		
+//		Example<Customer> example = Example.of(customer);
+//		List<Customer> list = customerRepository.findAll(example);
+//		System.out.println(list);
 		
-		Example<Customer> example = Example.of(customer);
-		List<Customer> list = customerRepository.findAll(example);
-		System.out.println(list);
+		Admin admin = new Admin();
+		admin.setAdminName("superMan");
+		admin.setAdminPassword("asdf1234");
+		adminRepository.save(admin);
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/learnjsp.jsp").forward(request, response);
 	}
 

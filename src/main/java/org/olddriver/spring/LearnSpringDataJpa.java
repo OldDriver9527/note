@@ -1,8 +1,4 @@
 package org.olddriver.spring;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 /**
  * 
  * spring data jpa 笔记
@@ -167,6 +163,8 @@ public class LearnSpringDataJpa {
 	 * 
 	 * @MappedSuperclass
 	 * 标识映射父类，映射父类不是实体类，不会映射表。类中定义通用属性供子类继承
-	 * 映射父类不使用@Entity，@Table修饰，
+	 * 映射父类不使用@Entity，@Table修饰
+	 * 
+	 * 
 	 */
 }
