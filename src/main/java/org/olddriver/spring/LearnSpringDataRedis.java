@@ -43,7 +43,5 @@ public class LearnSpringDataRedis {
 	 *    BoundZSetOperations 对指定key的有序集合进行操作
 	 * 5.HashOperations 对散列类型value进行操作
 	 *    BoundHashOperations 对指定key的散列进行操作
-	 * 
-	 * 
 	 */
 }
